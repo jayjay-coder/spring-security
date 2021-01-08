@@ -230,3 +230,45 @@ protected void configure(HttpSecurity http) throws Exception {
 7. 最后记得关闭 csrf ，关于 csrf 问题我到后面专门和大家说。
 
 当我们定义了登录页面为 /login.html 的时候，Spring Security 也会帮我们自动注册一个 /login.html 的接口，这个接口是 POST 请求，用来处理登录逻辑。
+
+##### 前端定义
+
+在项目的 resources/static 目录下新建一个login.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/login.html" method="post">
+    <div class="input">
+        <label for="name">用户名</label>
+        <input type="text" name="username" id="name">
+        <span class="spin"></span>
+    </div>
+    <div class="input">
+        <label for="pass">密码</label>
+        <input type="password" name="password" id="pass">
+        <span class="spin"></span>
+    </div>
+    <div class="button login">
+        <button type="submit">
+            <span>登录</span>
+            <i class="fa fa-check"></i>
+        </button>
+    </div>
+</form>
+</body>
+</html>
+```
+
+form 表单中，注意 action 为 `/login.html` ，其他的都是常规操作，我就不重复介绍了。
+
+好了，配置完成后，再去重启项目，此时访问任意页面，就会自动重定向到我们定义的这个页面上来，输入用户名密码就可以重新登录了。
+
+## 3.小节
+
+这篇文章和大家简单聊一下 Spring Security 入门，表单配置还有很多细节，下篇文章我们继续。
