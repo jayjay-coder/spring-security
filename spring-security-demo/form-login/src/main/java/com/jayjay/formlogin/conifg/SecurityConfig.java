@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 //指定登录页面
                 .loginPage("/login.html")
+                .loginProcessingUrl("/doLogin")
                 .permitAll()
                 .and()
                 .csrf().disable();
